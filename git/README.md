@@ -103,7 +103,7 @@ git merge origin/main
 git branch --list
 # или
 git branch
-# или удаленные ветки
+# или ветки на сервере (удаленный репозиторий)
 git branch --list -r
 # или все
 git branch --list -a
@@ -126,9 +126,16 @@ git branch -M main
 
 ```bash
 git remote add origin git@github.com:username/project-name.git
-
 # Посмотреть список remote
 git remote -v
+# Удалить remote
+git remote remove origin
+```
+
+Удалить локальные ссылки на те ветки, которые были удалены на сервере
+
+```bash
+git remote prune origin
 ```
 
 ### git push
@@ -156,10 +163,15 @@ git restore filename.txt
 
 ### git fetch
 
-Скачать обновления ветки
+Скачать обновления с удаленного репозитория, без merge
 
 ```bash
+# Скачает обновления по всем веткам из основного репозитория
 git fetch
+# Скачать со всех зарегестрированных не только origin
+git fetch --all
+# Обновить существующие ветки, и удалить несуществующие
+git fetch -p/--prune
 ```
 
 ### git pull
@@ -171,3 +183,15 @@ git fetch
 git pull
 # равносильно git pull origin main
 ```
+
+### git reflog
+
+Посмотреть всю историю действий
+
+```bash
+git reflog
+```
+
+### Ссылки
+
+[Dangit, Git!?!](https://dangitgit.com/)
