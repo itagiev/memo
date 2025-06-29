@@ -1,0 +1,30 @@
+services:
+  dotnet-demo:
+    image: ${DOCKER_REGISTRY-}dotnet-demo
+    build:
+      context: .
+      dockerfile: src/Web/Dockerfile
+      target: final
+      platforms:
+        - linux/amd64
+      args:
+        - BUILD_CONFIGURATION=Release
+    platform: linux/amd64
+    ports:
+      - 3000:3000
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_HTTP_PORTS=3000
+      - ConnectionStrings__mongodb=${MONGODB_CONNECTION_STRING}
+    depends_on:
+      - mongo
+    restart: always
+    networks:
+      - frontend
+      - backend
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
