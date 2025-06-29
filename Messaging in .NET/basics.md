@@ -1,6 +1,6 @@
-### Основы
+## Основы
 
-#### Publish
+### Publish
 
 ```C#
 private readonly IPublishEndpoint _publishEndpoint;
@@ -14,7 +14,7 @@ var notifyOrderCreated = _publishEndpoint.Publish(new OrderCreated()
 });
 ```
 
-#### Consumer
+### Consumer
 
 ```C#
 // Создание консьюмера
@@ -29,7 +29,7 @@ public class OrderCreatedConsumer : IConsumer<OrderCreated>
 }
 ```
 
-#### Регистрация консьюмера
+### Регистрация консьюмера
 
 ```C#
 builder.Services.AddMassTransit(options =>
@@ -42,7 +42,7 @@ builder.Services.AddMassTransit(options =>
 });
 ```
 
-#### Наименование очередей/событий
+### Наименование очередей/событий
 
 Можно установить `EntityName` атрибут для события
 
@@ -68,7 +68,7 @@ builder.Services.AddMassTransit(options =>
 });
 ```
 
-#### Конфигурация receive endpoints
+### Конфигурация receive endpoints
 
 Чтобы начать получать сообщения с определенной очереди, если мы знаем ее имя
 
@@ -90,7 +90,7 @@ options.UsingRabbitMq((context, cfg) =>
 When configuring endpoints manually, ConfigureEndpoints should be excluded or be called after any explicitly configured receive endpoints (Документация)
 
 
-#### Consumer definition
+### Consumer definition
 
 Пример
 
@@ -136,7 +136,7 @@ builder.Services.AddMassTransit(options =>
 });
 ```
 
-#### Headers
+### Headers
 
 Пример отправки сообщения со своим header value
 
@@ -154,7 +154,7 @@ context =>
 });
 ```
 
-#### Message Expiration
+### Message Expiration
 
 Пример использования TimeToLive
 
@@ -173,7 +173,7 @@ context =>
 });
 ```
 
-#### Competing Consumers
+### Competing Consumers
 
 Если к одной очереди подключено несколько консьюмеров
 
@@ -183,7 +183,7 @@ Exchange: order-created-consumer (receive endpoint: order-created)
 
 Тогда, они будут по очереди обрабатывать сообщения из очереди, т.о. можно скейлить приложение
 
-#### Sending commands
+### Sending commands
 
 [Send (MassTransit Documentation)](https://masstransit.io/documentation/concepts/producers#send)
 
@@ -252,7 +252,7 @@ services.AddMassTransit(x =>
 });
 ```
 
-#### Request/Response
+### Request/Response
 
 Создаем нужный нам консьюмер, который будет использоваться как request
 

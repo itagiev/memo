@@ -39,3 +39,5 @@ Endpoint abstracts the phisical messaging infrastructure, provides mechanism for
 
 - [Setup](setup.md)
 - [Basics](basics.md)
+- [Errors](errors.md)
+- [Retry policies](retry-replay.md)
