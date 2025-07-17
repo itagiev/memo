@@ -17,7 +17,7 @@ git checkout -b f-d
 
 И возвращаем изменения из stash `git stash pop`
 
-А если мы уже успели сделать комит, тогда можно отменить их `git reset HEAD~1`
+А если мы уже успели сделать коммит, тогда можно отменить их `git reset HEAD~1`
 
 ### Merge conflicts
 
@@ -32,7 +32,7 @@ git checkout feature-a
 git fetch
 # Делаем merge
 git merge origin/main
-# Разрешаем конфликт, делаем комит и пушим
+# Разрешаем конфликт, делаем коммит и пушим
 git add -A
 git commit -m "Merge branch 'main' into branch 'feature-a'"
 git push
@@ -47,10 +47,21 @@ git co feature-a
 git fetch
 # Делаем rebase
 git rebase origin/main
-# Разрешаем конфликт и делаем комит
+# Разрешаем конфликт и делаем коммит
 git add -A
 git commit "Update feature-a"
 git rebase --continue
 # Если был rebase, тогда мы как бы меняем истоию и нужно делать force push
 git push -f
+```
+
+### История переписана (git push -f)
+
+При совершении коммита с помощью `--amend` и `git push -f`, история будет переписана
+
+В локальных проектах желательно сделать
+
+```bash
+git fetch origin
+git reset --hard origin/main # Это удалит все незакоммиченные изменения
 ```
