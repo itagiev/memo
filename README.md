@@ -1,3 +1,3 @@
 ## Memo
 
-Description of technologies, configs and other things that need to be memorize
+Description of technologies, configs and other things that need to be memorized
