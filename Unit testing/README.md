@@ -154,7 +154,7 @@ public class User
 }
 
 var user = new User { Age = 21, Name = "John" };
-Func<bool> act = user.IsOld;
+Func<bool> act = () => user.IsOld();
 act.Should().Throw<NotImplementedException>().WithMessage("Not implemented yet.");
 ```
 
