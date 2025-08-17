@@ -169,8 +169,73 @@ monitor.Should().Raise("ValuesEvent");
 
 #### Internal fields/methods
 
+Доступ для тестов к внутренним полям из другого домена
+
 ```C#
 // Создать файл .cs в проекте в котором находятся необходимые internal поля
 // И вызвать этот метод для определенного домена
 [assembly: InternalsVisibleTo("UnitTests")]
 ```
+
+### Parallelism
+
+https://xunit.net/docs/running-tests-in-parallel
+
+### Member Data
+
+```C#
+[Theory]
+[MemberData(nameof(TestData))]
+public void Test1(int a, int b, int c)
+{
+}
+
+public static IEnumerable<object[]> TestData()
+{
+    yield return [1, 2, 3];
+    yield return [5, 2, 6];
+}
+```
+
+### Class Data
+
+```C#
+[Theory]
+[ClassData(typeof(ClassTestData))]
+public void Test2(int a, int b, int c)
+{
+}
+
+public class ClassTestData : IEnumerable<object[]>
+{
+    public IEnumerator<object[]> GetEnumerator()
+    {
+        object[] randomData = [Random.Shared.Next(), Random.Shared.Next(), Random.Shared.Next()];
+
+        yield return new object[] { 1, 2, 3 };
+        yield return new object[] { 5, 2, 6 };
+        yield return randomData;
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+}
+```
+
+### Timeouts
+
+```C#
+[Fact(Timeout = 2000)]
+public async Task Test()
+{
+    await Task.Delay(10000);
+}
+// Test execution timed out after 2000 milliseconds
+```
+
+### Continuous Testing
+
+В свой среде выполнения, можно настроить, например, запуск тестов после сборки
+
