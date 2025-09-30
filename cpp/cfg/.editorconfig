@@ -1,5 +1,21 @@
 root = true
 
-[{*.cpp,*.h}]
+# All files
+[*]
+charset = utf-8
+end_of_line = lf
+
+# Visual Studio Solution Files
+[*.sln]
+end_of_line = crlf
+
+# C/C++ files
+[*.{c,cpp,h,hpp,cxx,hxx}]
 indent_style = space
 indent_size = 4
+
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+cpp_space_within_initializer_list_braces = true
+cpp_space_after_comma = true
