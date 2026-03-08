@@ -10,72 +10,23 @@ $CA_SDKVersion = "9.0.0"
 
 mkdir $CA_SlnPath
 dotnet new editorconfig -o $CA_SlnPath
+dotnet new gitattributes -o $CA_SlnPath
 ```
 
-Содержимое .editorconfig между `# All files` и `#### .NET Coding Conventions ####`
-
 ```Properties
-# All files
-[*]
-charset = utf-8
-indent_style = space
-indent_size = 4
-insert_final_newline = true
-trim_trailing_whitespace = true
-
-# Visual Studio Solution Files
-[*.sln]
-indent_style = tab
-
-# Visual Studio XML Project Files
-[*.{csproj,vbproj,vcxproj.filters,proj,projitems,shproj}]
-indent_size = 2
-
-# XML Configuration Files
-[*.{xml,config,props,targets,nuspec,resx,ruleset,vsixmanifest,vsct}]
-indent_size = 2
-
-# JSON Files
-[*.{json,json5,webmanifest}]
-indent_size = 2
-
-# YAML Files
-[*.{yml,yaml}]
-indent_size = 2
-
-# Markdown Files
-[*.{md,mdx}]
-trim_trailing_whitespace = false
-
-# Web Files
-[*.{htm,html,js,jsm,ts,tsx,cjs,cts,ctsx,mjs,mts,mtsx,css,sass,scss,less,pcss,svg,vue}]
-indent_size = 2
-
-# Batch Files
-[*.{cmd,bat}]
-end_of_line = crlf
-
-# Bash Files
-[*.sh]
-end_of_line = lf
-
-# Makefiles
-[Makefile]
-indent_style = tab
-
 # C# files
 [*.cs]
 
 #### Core EditorConfig Options ####
 
 # Indentation and spacing
+indent_style = space
 indent_size = 4
+tab_width = 4
 
 # New line preferences
-insert_final_newline = true
 trim_trailing_whitespace = true
-
-#### .NET Coding Conventions ####
+insert_final_newline = false
 ```
 
 ```sh
@@ -104,19 +55,6 @@ dotnet new sln -o $CA_SlnPath -n $CA_SlnName
   </packageSourceMapping>
 
 </configuration>
-```
-
-Создание .gitattributes
-
-```Properties
-# Auto-detect text files, ensure they use LF.
-* text=auto eol=lf working-tree-encoding=UTF-8
-
-# Solution files
-*.sln text=auto eol=crlf working-tree-encoding=UTF-8
-
-# Bash scripts
-*.sh text eol=lf
 ```
 
 Содержимое для Directory.Build.props

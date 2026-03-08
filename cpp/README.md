@@ -3,8 +3,8 @@
 **WARNING** Set Configuration: "All Configurations" and Platforms: "All Platforms"
 
 General
-bin directory: $(SolutionDir)bin\$(Platform)\$(Configuration)\
-out directory: $(SolutionDir)out\$(Platform)\$(Configuration)\
+bin directory: $(SolutionDir)bin\$(Configuration)\$(Platform)\
+out directory: $(SolutionDir)out\$(ProjectName)\$(Configuration)\$(Platform)\
 
 C/C++ -> General
 Warning level: Level4 (/W4)
