@@ -9,3 +9,4 @@ insert_final_newline = true
 
 cpp_space_within_initializer_list_braces = true
 cpp_space_after_comma = true
+cpp_indent_namespace_contents = false
