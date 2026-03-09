@@ -4,7 +4,7 @@
 
 General
 bin directory: $(SolutionDir)bin\$(Configuration)\$(Platform)\
-out directory: $(SolutionDir)out\$(ProjectName)\$(Configuration)\$(Platform)\
+out directory: $(SolutionDir)obj\$(ProjectName)\$(Configuration)\$(Platform)\
 
 C/C++ -> General
 Warning level: Level4 (/W4)
